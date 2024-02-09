@@ -1,0 +1,41 @@
+name: 🚀 Deploy
+on:
+  pull_request:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    name: 🚧 Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: pnpm/action-setup@v2.4.0
+        name: Install pnpm
+        with:
+          version: 8
+      - uses: actions/setup-node@main
+        with:
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --prefer-offline
+      - run: pnpm build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: 🚀 Deploy
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

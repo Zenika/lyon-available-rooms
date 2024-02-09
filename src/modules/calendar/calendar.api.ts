@@ -1,5 +1,5 @@
 import { calendarsIds } from './calendars.ts';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 export type Calendars = Record<string, { busy: Array<{ end: string; start: string }> }>;
 

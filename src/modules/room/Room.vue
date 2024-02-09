@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { computed } from 'vue';
 import { calendarsIds } from '../calendar/calendars.ts';
 import type { Calendars } from '../calendar/calendar.api.ts';

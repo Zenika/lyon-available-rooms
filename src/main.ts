@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import './style.css';
 import App from './App.vue';
 
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import RelativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/fr.js';
 

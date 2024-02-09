@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useAuth } from '../modules/auth/useAuth.ts';
 import { onMounted } from 'vue';
 import { getFreeBusy, FreeBusyResponse } from '../modules/calendar/calendar.api.ts';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import Room from '../modules/room/Room.vue';
 
 const token = useAuth();
