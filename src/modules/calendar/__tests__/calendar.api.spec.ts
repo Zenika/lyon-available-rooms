@@ -4,7 +4,7 @@ import { getBookingUrl } from '../calendar.api.ts';
 describe('calendar.api', () => {
   describe('getBookingUrl', () => {
     it('should get the calendar link for the current hour', () => {
-      vi.setSystemTime(new Date('2024-02-01 11:12'))
+      vi.setSystemTime(new Date('2024-02-01 11:12'));
 
       console.log(getBookingUrl, typeof getBookingUrl);
       const bookingUrl = getBookingUrl('some-calendar-id');

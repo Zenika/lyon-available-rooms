@@ -18,25 +18,29 @@ export function getAuthenticationUrl() {
 
 export function parseAuthentication(authenticationParams: string): string | null {
   const authentication = new URLSearchParams(authenticationParams);
+  return authentication.get('access_token');
+}
 
-  const token = authentication.get('access_token');
-
+export function storeAuthentication(token: string) {
   if (token) {
     sessionStorage.setItem(LOCAL_STORAGE_KEY, token);
   }
-
-  return token;
 }
 
-export function doAuthentication(): string | null {
-  const storedToken = sessionStorage.getItem(LOCAL_STORAGE_KEY);
-
-  console.log(storedToken);
-
-  if (!storedToken) {
-    window.location.assign(getAuthenticationUrl());
-    return null;
+export function processAuthenticationOrRedirect(): string | void {
+  // Check if there was a token in URL
+  const tokenInUrl = parseAuthentication(window.location.hash.slice(1));
+  if (tokenInUrl) {
+    storeAuthentication(tokenInUrl);
+    return tokenInUrl;
   }
 
-  return storedToken;
+  // Otherwise check if there is token already stored
+  const storedToken = sessionStorage.getItem(LOCAL_STORAGE_KEY);
+  if (storedToken) {
+    return storedToken;
+  }
+
+  // Otherwise redirect to authentication
+  window.location.assign(getAuthenticationUrl());
 }

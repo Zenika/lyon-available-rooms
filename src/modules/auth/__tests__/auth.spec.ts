@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
-import { getAuthenticationUrl, parseAuthentication, doAuthentication } from '../auth.ts';
+import { getAuthenticationUrl, parseAuthentication } from '../auth.ts';
 
 describe('auth.ts', () => {
   beforeEach(() => {
@@ -38,14 +38,6 @@ describe('auth.ts', () => {
 
       expect(sessionStorage.getItem('auth.token')).toEqual(token);
       expect(value).toEqual(token);
-    });
-  });
-
-  describe('doAuthentication', () => {
-    it('should redirect to google auth if there no authentication', () => {
-      const response = doAuthentication();
-      expect(response).toBeNull();
-      expect(window.location.assign).toBeCalledWith(getAuthenticationUrl());
     });
   });
 });

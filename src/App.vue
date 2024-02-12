@@ -1,16 +1,16 @@
 <script setup lang="ts">
+import Home from './routes/Home.vue';
 import { provideAuth } from './modules/auth/useAuth.ts';
-import { doAuthentication } from './modules/auth/auth.ts';
+import { processAuthenticationOrRedirect } from './modules/auth/auth.ts';
 
-const token = doAuthentication();
-
+const token = processAuthenticationOrRedirect();
 if (token) {
   provideAuth(token);
 }
 </script>
 
 <template>
-  <router-view />
+  <Home />
 </template>
 
 <style scoped></style>

@@ -9,6 +9,4 @@ import 'dayjs/locale/fr.js';
 dayjs.extend(RelativeTime);
 dayjs.locale('fr');
 
-import { router } from './router.ts';
-
-createApp(App).use(router).mount('#app');
+createApp(App).mount('#app');
