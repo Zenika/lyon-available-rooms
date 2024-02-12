@@ -32,6 +32,7 @@ export function processAuthenticationOrRedirect(): string | void {
   const tokenInUrl = parseAuthentication(window.location.hash.slice(1));
   if (tokenInUrl) {
     storeAuthentication(tokenInUrl);
+    history.pushState(null, '', location.pathname + location.search);
     return tokenInUrl;
   }
 
