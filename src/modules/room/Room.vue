@@ -49,8 +49,9 @@ const availableIn = computed(() => {
     return 'Disponible tout de suite';
   }
   const availableInMinutes = dayjs(currentOccupation.value.end).fromNow();
+  const hour = dayjs(currentOccupation.value.end).format('HH:mm')
 
-  return `Disponible ${availableInMinutes}`;
+  return `Disponible ${availableInMinutes} (${hour})`;
 });
 
 const nextOccupationIn = computed(() => {
@@ -58,8 +59,9 @@ const nextOccupationIn = computed(() => {
     return '';
   }
   const availableInMinutes = dayjs(nextOccupation.value.start).fromNow();
+  const hour = dayjs(nextOccupation.value.start).format('HH:mm')
 
-  return `Occupée ${availableInMinutes}`;
+  return `Occupée ${availableInMinutes} (${hour})`;
 });
 </script>
 
@@ -87,7 +89,7 @@ const nextOccupationIn = computed(() => {
 }
 
 .room.busy {
-  background-color: #f43f5e;
+  background: repeating-linear-gradient( -45deg, #f87171, #f87171 20px, #dc2626 20px, #dc2626 40px);
 }
 
 .small-text {
