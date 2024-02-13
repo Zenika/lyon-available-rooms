@@ -26,7 +26,7 @@ onMounted(async () => {
       <ul class="rooms-list">
         <li>
           <room class="grain-de-sable" :calendars="data?.calendars" calendar-name="graindesable">
-            <p>Grain de sable <span class="surname">(La chambre à Manu)</span></p>
+            <p>Grain de sable <span class="surname">(La salle de sieste)</span></p>
           </room>
         </li>
       </ul>
@@ -36,12 +36,12 @@ onMounted(async () => {
       <ul class="rooms-list">
         <li>
           <room class="californication" :calendars="data?.calendars" calendar-name="californication">
-            <p>Californication <span class="surname">(La salle de la machine à café)</span></p>
+            <p>Californication <span class="surname">(La salle à côté des toilettes)</span></p>
           </room>
         </li>
         <li>
           <room class="tetra" :calendars="data?.calendars" calendar-name="tetra">
-            <p>Tetra <span class="surname">(Le bureau de FX)</span></p>
+            <p>Tetra <span class="surname">(Le salle des bureaux debout)</span></p>
           </room>
         </li>
         <li>
@@ -109,8 +109,14 @@ h2 {
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
+}
+
+@media screen and (min-width: 900px) {
+  .rooms-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .rooms-list li {
